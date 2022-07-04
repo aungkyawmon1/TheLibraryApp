@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookListCollectionViewCell" id="gTV-IL-0wX" customClass="BookListCollectionViewCell" customModule="TheLibraryApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="151" height="233"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="151" height="233"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVt-KQ-qxS">
+                        <rect key="frame" x="0.0" y="0.0" width="151" height="233"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="the_subtle_of_not_giving" translatesAutoresizingMaskIntoConstraints="NO" id="a1z-D7-eWK">
+                                <rect key="frame" x="0.0" y="0.0" width="151" height="186.5"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZE-Ut-wjP">
+                                <rect key="frame" x="121" y="0.0" width="30" height="30"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_more" translatesAutoresizingMaskIntoConstraints="NO" id="OWa-0n-QHA">
+                                        <rect key="frame" x="3" y="3" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="IKQ-pN-zfE"/>
+                                            <constraint firstAttribute="height" constant="24" id="TQV-w1-8Fq"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="color_gray_transparent"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Euw-XO-a9N"/>
+                                    <constraint firstItem="OWa-0n-QHA" firstAttribute="centerY" secondItem="HZE-Ut-wjP" secondAttribute="centerY" id="FZP-Hz-JZq"/>
+                                    <constraint firstAttribute="height" constant="30" id="gt0-wl-EUq"/>
+                                    <constraint firstItem="OWa-0n-QHA" firstAttribute="centerX" secondItem="HZE-Ut-wjP" secondAttribute="centerX" id="qEk-tu-Gmp"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Pgo-hV-ihK">
+                                <rect key="frame" x="0.0" y="194.5" width="151" height="36.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change by design my load" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ba-Vb-ewA">
+                                        <rect key="frame" x="0.0" y="0.0" width="151" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Tim Brown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNX-h5-dbS">
+                                        <rect key="frame" x="0.0" y="19.5" width="151" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="a1z-D7-eWK" secondAttribute="trailing" id="7vd-D8-GPD"/>
+                            <constraint firstItem="HZE-Ut-wjP" firstAttribute="top" secondItem="GVt-KQ-qxS" secondAttribute="top" id="ETG-9S-aAl"/>
+                            <constraint firstItem="a1z-D7-eWK" firstAttribute="leading" secondItem="GVt-KQ-qxS" secondAttribute="leading" id="F8Q-pb-bY4"/>
+                            <constraint firstItem="Pgo-hV-ihK" firstAttribute="leading" secondItem="GVt-KQ-qxS" secondAttribute="leading" id="IdP-aI-P5k"/>
+                            <constraint firstAttribute="trailing" secondItem="HZE-Ut-wjP" secondAttribute="trailing" id="NFa-gs-yfB"/>
+                            <constraint firstAttribute="trailing" secondItem="Pgo-hV-ihK" secondAttribute="trailing" id="dVg-wX-CvV"/>
+                            <constraint firstItem="a1z-D7-eWK" firstAttribute="top" secondItem="GVt-KQ-qxS" secondAttribute="top" id="iWp-wK-4us"/>
+                            <constraint firstItem="a1z-D7-eWK" firstAttribute="height" secondItem="GVt-KQ-qxS" secondAttribute="height" multiplier="0.8" id="yGw-Gh-5cx"/>
+                            <constraint firstItem="Pgo-hV-ihK" firstAttribute="top" secondItem="a1z-D7-eWK" secondAttribute="bottom" constant="8" id="zDw-i6-atq"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="GVt-KQ-qxS" secondAttribute="trailing" id="5OG-hJ-a0O"/>
+                <constraint firstAttribute="bottom" secondItem="GVt-KQ-qxS" secondAttribute="bottom" id="ERD-OI-PaY"/>
+                <constraint firstItem="GVt-KQ-qxS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="JnD-bP-kLO"/>
+                <constraint firstItem="GVt-KQ-qxS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="byx-Ly-r7j"/>
+            </constraints>
+            <size key="customSize" width="151" height="233"/>
+            <connections>
+                <outlet property="ivBookImage" destination="a1z-D7-eWK" id="xkv-WY-SpI"/>
+                <outlet property="moreOptionContainer" destination="HZE-Ut-wjP" id="f2z-65-rlV"/>
+            </connections>
+            <point key="canvasLocation" x="210.86956521739131" y="181.13839285714286"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="menu_more" width="32" height="32"/>
+        <image name="the_subtle_of_not_giving" width="533.33331298828125" height="799"/>
+        <namedColor name="color_gray_transparent">
+            <color red="0.82745098039215681" green="0.82745098039215681" blue="0.82745098039215681" alpha="0.20000000298023224" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

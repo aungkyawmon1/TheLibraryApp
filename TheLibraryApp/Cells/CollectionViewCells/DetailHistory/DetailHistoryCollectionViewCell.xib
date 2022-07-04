@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DetailHistoryCollectionViewCell" id="gTV-IL-0wX" customClass="DetailHistoryCollectionViewCell" customModule="TheLibraryApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="227" height="321"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="227" height="321"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IuT-qH-c7a">
+                        <rect key="frame" x="0.0" y="0.0" width="227" height="321"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="action_thriller_book_cover" translatesAutoresizingMaskIntoConstraints="NO" id="bnd-gg-195">
+                                <rect key="frame" x="0.0" y="0.0" width="227" height="321"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bnd-gg-195" secondAttribute="trailing" id="03j-ma-U3P"/>
+                            <constraint firstAttribute="bottom" secondItem="bnd-gg-195" secondAttribute="bottom" id="4fq-jV-oUY"/>
+                            <constraint firstItem="bnd-gg-195" firstAttribute="leading" secondItem="IuT-qH-c7a" secondAttribute="leading" id="mqd-fg-ZSI"/>
+                            <constraint firstItem="bnd-gg-195" firstAttribute="top" secondItem="IuT-qH-c7a" secondAttribute="top" id="xyw-bc-2af"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="IuT-qH-c7a" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MMO-W7-C53"/>
+                <constraint firstAttribute="bottom" secondItem="IuT-qH-c7a" secondAttribute="bottom" id="uGp-R9-MYp"/>
+                <constraint firstItem="IuT-qH-c7a" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="uYc-hf-8BZ"/>
+                <constraint firstAttribute="trailing" secondItem="IuT-qH-c7a" secondAttribute="trailing" id="wNp-aI-71w"/>
+            </constraints>
+            <size key="customSize" width="227" height="321"/>
+            <point key="canvasLocation" x="263.04347826086956" y="184.48660714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="action_thriller_book_cover" width="144" height="230.33332824707031"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

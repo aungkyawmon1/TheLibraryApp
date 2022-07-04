@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="290" id="KGk-i7-Jjw" customClass="BookListTableViewCell" customModule="TheLibraryApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="290"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="290"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EpT-TB-qny">
+                        <rect key="frame" x="20" y="20" width="374" height="21.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ebooks for you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CqS-Dj-ufl">
+                                <rect key="frame" x="0.0" y="0.0" width="354" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.forward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uuk-xD-h49">
+                                <rect key="frame" x="354" y="2" width="20" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="LoV-NQ-VHG"/>
+                                    <constraint firstAttribute="width" constant="20" id="pXr-Eq-awe"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                    </stackView>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tzF-LC-7re">
+                        <rect key="frame" x="0.0" y="57.5" width="414" height="230"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="230" id="bLR-Kp-5St"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PlN-Kt-O9j">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tzF-LC-7re" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="AY5-pd-5c2"/>
+                    <constraint firstItem="tzF-LC-7re" firstAttribute="top" secondItem="EpT-TB-qny" secondAttribute="bottom" constant="16" id="GYc-DL-DYm"/>
+                    <constraint firstAttribute="bottom" secondItem="tzF-LC-7re" secondAttribute="bottom" id="Hrg-TP-mRC"/>
+                    <constraint firstAttribute="trailing" secondItem="tzF-LC-7re" secondAttribute="trailing" id="JvS-Bl-IDX"/>
+                    <constraint firstItem="EpT-TB-qny" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="elK-kd-leN"/>
+                    <constraint firstItem="EpT-TB-qny" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="gpY-ux-XIM"/>
+                    <constraint firstAttribute="trailing" secondItem="EpT-TB-qny" secondAttribute="trailing" constant="20" id="lR5-IU-6Sg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bookListCollectionView" destination="tzF-LC-7re" id="DPU-VK-Fap"/>
+                <outlet property="ivShowMore" destination="uuk-xD-h49" id="B0U-FT-YOb"/>
+                <outlet property="lblTitle" destination="CqS-Dj-ufl" id="hD4-qD-b5S"/>
+            </connections>
+            <point key="canvasLocation" x="205.79710144927537" y="202.23214285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chevron.forward" catalog="system" width="96" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
