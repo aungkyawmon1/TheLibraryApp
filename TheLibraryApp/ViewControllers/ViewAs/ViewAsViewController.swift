@@ -62,7 +62,6 @@ extension ViewAsViewController: UITableViewDataSource {
         cell.bindData(name: list[indexPath.row])
         if selectedGrid.rawValue == indexPath.row {
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-            //tableView.setSelected(true, animated: true)
         }
         return cell
     }

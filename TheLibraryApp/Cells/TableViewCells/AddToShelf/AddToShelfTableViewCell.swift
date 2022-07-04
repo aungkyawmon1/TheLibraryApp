@@ -9,6 +9,9 @@ import UIKit
 
 class AddToShelfTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lblShelfName: UILabel!
+    @IBOutlet weak var lblBookCount: UILabel!
+    @IBOutlet weak var btnCheckmark: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -17,7 +20,11 @@ class AddToShelfTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        if selected {
+            btnCheckmark.isSelected = true
+        } else {
+            btnCheckmark.isSelected = false
+        }
     }
     
 }

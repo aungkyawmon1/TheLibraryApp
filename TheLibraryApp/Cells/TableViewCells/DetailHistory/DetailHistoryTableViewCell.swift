@@ -62,7 +62,7 @@ extension DetailHistoryTableViewCell: UICollectionViewDataSource {
 
 extension DetailHistoryTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: CGFloat(200), height: CGFloat(200))
+        CGSize(width: CGFloat(250), height: CGFloat(200))
     }
 }
 

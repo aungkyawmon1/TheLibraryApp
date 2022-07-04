@@ -29,6 +29,8 @@
 		52357557286DEFEA00DC4B50 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52357556286DEFEA00DC4B50 /* RatingControl.swift */; };
 		5235755B286DF84C00DC4B50 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52357559286DF84C00DC4B50 /* CommentsTableViewCell.swift */; };
 		5235755C286DF84C00DC4B50 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5235755A286DF84C00DC4B50 /* CommentsTableViewCell.xib */; };
+		525A2760287318BD00410A13 /* AddToShelfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525A275E287318BD00410A13 /* AddToShelfViewController.swift */; };
+		525A2761287318BD00410A13 /* AddToShelfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525A275F287318BD00410A13 /* AddToShelfViewController.xib */; };
 		525B71432871511C007D1D87 /* RadioButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B71412871511C007D1D87 /* RadioButtonTableViewCell.swift */; };
 		525B71442871511C007D1D87 /* RadioButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525B71422871511C007D1D87 /* RadioButtonTableViewCell.xib */; };
 		525B714628716410007D1D87 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B714528716410007D1D87 /* UITextField+Extension.swift */; };
@@ -90,6 +92,8 @@
 		52357556286DEFEA00DC4B50 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		52357559286DF84C00DC4B50 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		5235755A286DF84C00DC4B50 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
+		525A275E287318BD00410A13 /* AddToShelfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToShelfViewController.swift; sourceTree = "<group>"; };
+		525A275F287318BD00410A13 /* AddToShelfViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddToShelfViewController.xib; sourceTree = "<group>"; };
 		525B71412871511C007D1D87 /* RadioButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonTableViewCell.swift; sourceTree = "<group>"; };
 		525B71422871511C007D1D87 /* RadioButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RadioButtonTableViewCell.xib; sourceTree = "<group>"; };
 		525B714528716410007D1D87 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 		520F992D2869F9A200FA3571 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				525A275D2873186C00410A13 /* AddToShelf */,
 				525B71542871E193007D1D87 /* SortBy */,
 				52CB3400287081CD00555AE2 /* CreateShelf */,
 				52CB33FB28707DE700555AE2 /* ViewAs */,
@@ -216,6 +221,7 @@
 		5210962328693AF500EE8D60 /* TheLibraryApp */ = {
 			isa = PBXGroup;
 			children = (
+				525A276228732F6C00410A13 /* Model */,
 				525B714E2871DAD6007D1D87 /* Delegate */,
 				52A29730286A92F400298B03 /* Cells */,
 				520F9936286A068B00FA3571 /* Utils */,
@@ -289,6 +295,22 @@
 				5235755A286DF84C00DC4B50 /* CommentsTableViewCell.xib */,
 			);
 			path = Comments;
+			sourceTree = "<group>";
+		};
+		525A275D2873186C00410A13 /* AddToShelf */ = {
+			isa = PBXGroup;
+			children = (
+				525A275E287318BD00410A13 /* AddToShelfViewController.swift */,
+				525A275F287318BD00410A13 /* AddToShelfViewController.xib */,
+			);
+			path = AddToShelf;
+			sourceTree = "<group>";
+		};
+		525A276228732F6C00410A13 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		525B7140287150FA007D1D87 /* RadioButton */ = {
@@ -555,6 +577,7 @@
 				52357554286DEC8000DC4B50 /* RatingAndReviewsTableViewCell.xib in Resources */,
 				5210962E28693AF700EE8D60 /* Assets.xcassets in Resources */,
 				52CB3404287081EB00555AE2 /* CreateShelfViewController.xib in Resources */,
+				525A2761287318BD00410A13 /* AddToShelfViewController.xib in Resources */,
 				52A2973C286A98D000298B03 /* BookListCollectionViewCell.xib in Resources */,
 				5210962C28693AF500EE8D60 /* Main.storyboard in Resources */,
 				525B714B2871A3B7007D1D87 /* BookListAsListCollectionViewCell.xib in Resources */,
@@ -636,6 +659,7 @@
 				5210962528693AF500EE8D60 /* AppDelegate.swift in Sources */,
 				52A29761286C98AF00298B03 /* MoreActionViewController.swift in Sources */,
 				525B71432871511C007D1D87 /* RadioButtonTableViewCell.swift in Sources */,
+				525A2760287318BD00410A13 /* AddToShelfViewController.swift in Sources */,
 				5210962728693AF500EE8D60 /* SceneDelegate.swift in Sources */,
 				52A29757286B529500298B03 /* DetailHistoryTableViewCell.swift in Sources */,
 				520F99332869FAEC00FA3571 /* HomeViewController.swift in Sources */,
