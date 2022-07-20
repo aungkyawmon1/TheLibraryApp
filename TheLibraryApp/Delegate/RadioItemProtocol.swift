@@ -7,6 +7,7 @@
 
 import Foundation
 
-protocol RadioItemProtocol {
+protocol RadioItemProtocol: AnyObject {
     func onTapRadioItem(index: Layout)
+    func onTapRadioForSort(index: SortBy)
 }

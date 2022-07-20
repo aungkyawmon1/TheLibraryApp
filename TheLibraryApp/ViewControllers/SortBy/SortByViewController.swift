@@ -9,12 +9,16 @@ import UIKit
 
 class SortByViewController: UIViewController {
     @IBOutlet weak var sortTableView: UITableView!
+    @IBOutlet weak var viewContainer: UIView!
     
-    let list = ["Recently opened","Title","Author"]
+    private let list = ["Recently opened","Title","Author"]
+    var selectedGrid = SortBy.recent
+    weak var delegate: RadioItemProtocol? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setUpTableView()
+        gestureForViewContainer()
     }
     
     private func setUpTableView() {
@@ -26,6 +30,16 @@ class SortByViewController: UIViewController {
         
         sortTableView.registerForCell(identifier: RadioButtonTableViewCell.identifier)
         
+    }
+    
+    private func gestureForViewContainer() {
+        let tapForViewContainer = UITapGestureRecognizer(target: self, action: #selector(onTapViewContainer))
+        viewContainer.addGestureRecognizer(tapForViewContainer)
+        viewContainer.isUserInteractionEnabled = true
+    }
+    
+    @objc private func onTapViewContainer() {
+        dismiss(animated: true)
     }
 
 }
@@ -43,6 +57,9 @@ extension SortByViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RadioButtonTableViewCell.identifier, for: indexPath) as? RadioButtonTableViewCell else { return UITableViewCell() }
         cell.bindData(name: list[indexPath.row])
+        if selectedGrid.rawValue == indexPath.row {
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        }
         return cell
     }
     
@@ -50,5 +67,7 @@ extension SortByViewController: UITableViewDataSource {
 }
 
 extension SortByViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.onTapRadioForSort(index: SortBy(rawValue: indexPath.row) ?? .recent)
+    }
 }

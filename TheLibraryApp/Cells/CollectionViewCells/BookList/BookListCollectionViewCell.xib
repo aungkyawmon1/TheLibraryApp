@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVt-KQ-qxS">
                         <rect key="frame" x="0.0" y="0.0" width="151" height="233"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="the_subtle_of_not_giving" translatesAutoresizingMaskIntoConstraints="NO" id="a1z-D7-eWK">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="action_thriller_book_cover" translatesAutoresizingMaskIntoConstraints="NO" id="a1z-D7-eWK">
                                 <rect key="frame" x="0.0" y="0.0" width="151" height="186.5"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -101,14 +101,17 @@
             <size key="customSize" width="151" height="233"/>
             <connections>
                 <outlet property="ivBookImage" destination="a1z-D7-eWK" id="xkv-WY-SpI"/>
+                <outlet property="lblAuthor" destination="eNX-h5-dbS" id="WOy-fO-wW6"/>
+                <outlet property="lblTitle" destination="0ba-Vb-ewA" id="Gqn-tL-G7Z"/>
                 <outlet property="moreOptionContainer" destination="HZE-Ut-wjP" id="f2z-65-rlV"/>
+                <outlet property="viewMore" destination="HZE-Ut-wjP" id="7qW-Am-zYc"/>
             </connections>
             <point key="canvasLocation" x="210.86956521739131" y="181.13839285714286"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="action_thriller_book_cover" width="144" height="230.33332824707031"/>
         <image name="menu_more" width="32" height="32"/>
-        <image name="the_subtle_of_not_giving" width="533.33331298828125" height="799"/>
         <namedColor name="color_gray_transparent">
             <color red="0.82745098039215681" green="0.82745098039215681" blue="0.82745098039215681" alpha="0.20000000298023224" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

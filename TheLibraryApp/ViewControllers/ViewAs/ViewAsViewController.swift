@@ -13,7 +13,7 @@ class ViewAsViewController: UIViewController {
     @IBOutlet weak var viewContainer: UIView!
     private let list = ["List","Large grid","Small grid"]
     var selectedGrid: Layout = .list
-    var delegate: RadioItemProtocol?
+    weak var delegate: RadioItemProtocol? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,7 +21,7 @@ class ViewAsViewController: UIViewController {
         setUpTableView()
     }
     
-  
+
     
     private func setUpTableView() {
         radioTableView.dataSource = self

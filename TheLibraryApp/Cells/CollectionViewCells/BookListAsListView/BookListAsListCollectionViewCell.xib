@@ -89,6 +89,13 @@
                 <constraint firstAttribute="trailing" secondItem="Nkr-3K-iTd" secondAttribute="trailing" id="z1g-VE-NpT"/>
             </constraints>
             <size key="customSize" width="410" height="108"/>
+            <connections>
+                <outlet property="authorLbl" destination="xS3-om-abm" id="JdC-PG-lnf"/>
+                <outlet property="bookCoverIV" destination="1Ps-Df-2G6" id="OeZ-Sj-KIQ"/>
+                <outlet property="sampleLbl" destination="w0Z-Rp-QV1" id="3Kc-uR-HWl"/>
+                <outlet property="titleLbl" destination="CtU-iC-DFD" id="Kq2-jR-nYq"/>
+                <outlet property="viewMore" destination="6mO-Hm-GgE" id="pBE-qA-2bb"/>
+            </connections>
             <point key="canvasLocation" x="398.55072463768118" y="158.03571428571428"/>
         </collectionViewCell>
     </objects>

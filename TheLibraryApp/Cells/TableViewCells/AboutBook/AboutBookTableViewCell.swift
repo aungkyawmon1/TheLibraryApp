@@ -9,6 +9,15 @@ import UIKit
 
 class AboutBookTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var descriptionLbl : UILabel!
+    
+    var bookDescription : String? {
+        didSet {
+            if let data = bookDescription {
+                descriptionLbl.text = data
+            }
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

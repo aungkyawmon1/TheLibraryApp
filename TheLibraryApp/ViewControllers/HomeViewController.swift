@@ -6,43 +6,17 @@
 //
 
 import UIKit
-
-enum HomeViewControllerSectionType {
-    case RecentlyOpenedItems
-    case CategorySelection
-    case ItemList(items: [BookListItem])
-}
-
-struct BookListItem {
-    let title: String
-    let books: [Item]
-    
-    struct Item {
-        let image: String
-        let title: String
-        let id: Int
-    }
-}
+import Combine
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var homeTableView: UITableView!
-    
-    var items: [HomeViewControllerSectionType] = [
-        .RecentlyOpenedItems,
-        .CategorySelection,
-        .ItemList(items: [
-            BookListItem(title: "2022 Best Selling Books", books: [ BookListItem.Item ]() ),
-            BookListItem(title: "2022 Best Selling Books", books: [ BookListItem.Item ]() ),
-            BookListItem(title: "2022 Best Selling Books", books: [ BookListItem.Item ]() ),
-            BookListItem(title: "2022 Best Selling Books", books: [ BookListItem.Item ]() ),
-        ])
-    ]
+    var bag = Set<AnyCancellable>()
+    private var viewModel : HomeViewModel!
     
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "Search Play Books"
-      //  searchBar.setImage(UIImage(named: "profile"), for: .search, state: .normal)
         return searchBar
     }()
     
@@ -50,13 +24,33 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        viewModel = HomeViewModel(bookModel: BookModel.shared)
+        viewModel.viewState.sink { homeViewState in
+            switch homeViewState {
+            case .success(let sectionType):
+                switch sectionType {
+                case .RecentlyOpenedItems(_):
+                    self.homeTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                case .CategorySelection:
+                    debugPrint("CategorySelection")
+                case .ItemList(_):
+                    self.homeTableView.reloadData()
+                }
+            case .failure(let message):
+                debugPrint(message)
+            }
+        }.store(in: &bag)
+        
+        viewModel.fetchAllData()
+        
         initState()
-       setUpTableView()
+        setUpTableView()
+        
     }
     
     private func setUpTableView() {
         homeTableView.dataSource = self
-        homeTableView.delegate = self
+        //homeTableView.delegate = self
         homeTableView.separatorStyle = .none
         homeTableView.showsVerticalScrollIndicator = false
         homeTableView.showsHorizontalScrollIndicator = false
@@ -67,9 +61,9 @@ class HomeViewController: UIViewController {
     }
     
     private func initState() {
+        searchBar.delegate = self
         navigationItem.titleView = searchBar
         let searchBarButtonView = ImageBarButton(withImage: #imageLiteral(resourceName: "profile")) // Assets
-        //searchBarButtonView.button.addTarget(self, action: #selector(presentSearchViewController), for: .touchUpInside)
         navigationItem.rightBarButtonItems = [searchBarButtonView.load()]
     }
     
@@ -78,44 +72,35 @@ class HomeViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension HomeViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        items.count
+        viewModel.getSectionCount()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch items[section] {
-        case .ItemList(let items):
-            return items.count
-        default:
-            return 1
-        }
+        viewModel.getNubmerOfRowInSection(sectionType: viewModel.getItemSection(section))
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let itemType = items[indexPath.section]
+        let itemType = viewModel.getItemSection(indexPath.section)
         switch itemType {
-        case .ItemList(_):
+        case .ItemList(let listVO):
             guard let cell = tableView.dequeueCell(identifier: BookListTableViewCell.identifier, indexPath: indexPath) as? BookListTableViewCell else { return UITableViewCell() }
+            cell.delegate = self
+            cell.detailDelegate = self
+            cell.showMoreDelegate = self
+            cell.listVO = listVO[indexPath.row]
             return cell
         case .CategorySelection:
             guard let cell = tableView.dequeueCell(identifier: CategorySectionTableViewCell.identifier, indexPath: indexPath) as? CategorySectionTableViewCell else { return UITableViewCell() }
             return cell
-        case .RecentlyOpenedItems:
+        case .RecentlyOpenedItems(let list):
             guard let cell = tableView.dequeueCell(identifier: DetailHistoryTableViewCell.identifier, indexPath: indexPath) as? DetailHistoryTableViewCell else { return UITableViewCell() }
+            cell.recentlyDetailedBooks = list
             return cell
         }
     }
@@ -125,4 +110,32 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UITableViewDelegate {
     
+}
+
+extension HomeViewController: ViewMoreProtocol {
+    func clickViewMore(bookVO: BookVO) {
+        navigateToMoreAction(bookVO: bookVO)
+    }
+}
+
+
+extension HomeViewController: DetailProtocol {
+    func goToDetail(book: BookVO) {
+        self.navigateToDetail(book: book)
+    }
+}
+
+extension HomeViewController: ShowMoreProtocol {
+    func tapShowMore(id: Int, listNameEncoded: String) {
+        self.navigateToShowMore(id, listNameEncoded)
+    }
+}
+
+
+extension HomeViewController: UISearchBarDelegate {
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        navigateToSearch()
+        return false
+    }
 }

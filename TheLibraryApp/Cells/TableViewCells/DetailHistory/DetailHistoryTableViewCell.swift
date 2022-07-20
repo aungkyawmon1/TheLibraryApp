@@ -12,17 +12,16 @@ class DetailHistoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var detailHistoryCollectionView: UICollectionView!
     
+    var recentlyDetailedBooks : [RecentDetailVO]? {
+        didSet {
+            detailHistoryCollectionView.reloadData()
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         updateUI()
     }
     
-//    private func registerCells() {
-//        detailHistoryCollectionView.dataSource = self
-//        detailHistoryCollectionView.delegate = self
-//        detailHistoryCollectionView.registerForCell(identifier: DetailHistoryCollectionViewCell.identifier)
-//    }
-//
     
     func updateUI() {
        // collectionViewCard.isHidden = false
@@ -49,11 +48,12 @@ class DetailHistoryTableViewCell: UITableViewCell {
 
 extension DetailHistoryTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return recentlyDetailedBooks?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueCell(identifier: DetailHistoryCollectionViewCell.identifier, indexPath: indexPath) as? DetailHistoryCollectionViewCell else { return UICollectionViewCell() }
+        cell.image = recentlyDetailedBooks?[indexPath.row].book?.bookImage
         return cell
     }
     

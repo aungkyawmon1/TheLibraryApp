@@ -47,6 +47,9 @@
                 <constraint firstAttribute="trailing" secondItem="IuT-qH-c7a" secondAttribute="trailing" id="wNp-aI-71w"/>
             </constraints>
             <size key="customSize" width="227" height="321"/>
+            <connections>
+                <outlet property="bookImage" destination="bnd-gg-195" id="ccc-4d-9MK"/>
+            </connections>
             <point key="canvasLocation" x="263.04347826086956" y="184.48660714285714"/>
         </collectionViewCell>
     </objects>
