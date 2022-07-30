@@ -52,6 +52,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addToWishlistBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="u4I-2H-qA5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -102,6 +105,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnAddToWishlist" destination="cCQ-H0-Ayo" id="Hg8-Yd-U6N"/>
+            </connections>
             <point key="canvasLocation" x="191.30434782608697" y="169.41964285714286"/>
         </tableViewCell>
     </objects>

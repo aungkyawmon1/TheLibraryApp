@@ -87,6 +87,11 @@
                 <constraint firstAttribute="trailing" secondItem="xLK-uZ-LMC" secondAttribute="trailing" id="VPZ-tL-2ge"/>
             </constraints>
             <size key="customSize" width="467" height="109"/>
+            <connections>
+                <outlet property="ivShelfImage" destination="A4u-SB-VPD" id="tHj-sL-QlO"/>
+                <outlet property="lblBookCount" destination="HM0-DP-SwJ" id="YVm-Wo-14n"/>
+                <outlet property="lblShelfTitle" destination="7ZC-f8-F1C" id="8hF-0q-xQv"/>
+            </connections>
             <point key="canvasLocation" x="439.85507246376812" y="96.09375"/>
         </collectionViewCell>
     </objects>

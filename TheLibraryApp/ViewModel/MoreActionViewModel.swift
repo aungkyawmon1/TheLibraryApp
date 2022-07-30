@@ -18,9 +18,6 @@ class MoreActionViewModel {
     
     private var bookModel: BookModelProtocol
     private var bookVO: BookVO
-    var bag = Set<AnyCancellable>()
-    var viewState: PassthroughSubject<LibraryViewState, Never> = .init()
-    private var wishlist = [WishlistVO]()
     
     init(bookModel: BookModel, bookVO: BookVO) {
         self.bookModel = bookModel

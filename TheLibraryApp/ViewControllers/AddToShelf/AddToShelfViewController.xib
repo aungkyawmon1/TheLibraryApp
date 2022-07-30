@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,7 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddToShelfViewController" customModule="TheLibraryApp" customModuleProvider="target">
             <connections>
+                <outlet property="btnCreateShelf" destination="R7h-yz-CF3" id="nTZ-ol-tWF"/>
+                <outlet property="lblToastMessage" destination="U9o-7X-7Ep" id="7DF-Yf-DoM"/>
                 <outlet property="shelfTableView" destination="SdX-xv-a8T" id="CuB-8V-DlQ"/>
+                <outlet property="toastViewContainer" destination="6pv-wv-ja8" id="D1u-zQ-wyF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,23 +23,81 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SdX-xv-a8T">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SdX-xv-a8T">
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7h-yz-CF3">
+                    <rect key="frame" x="107" y="794" width="200" height="48"/>
+                    <color key="backgroundColor" name="AccentColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="XW4-fq-bLm"/>
+                        <constraint firstAttribute="width" constant="200" id="uYW-M2-OVd"/>
+                    </constraints>
+                    <color key="tintColor" red="0.97647058819999999" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system" title="Create new" imagePadding="10"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="24"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="createShelfClicked:" destination="-1" eventType="touchUpInside" id="PKo-Zh-d1T"/>
+                    </connections>
+                </button>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pv-wv-ja8">
+                    <rect key="frame" x="20" y="788" width="374" height="58"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="book is already exist in BB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9o-7X-7Ep">
+                            <rect key="frame" x="20" y="20" width="334" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="58" id="H9A-A7-Qva"/>
+                        <constraint firstItem="U9o-7X-7Ep" firstAttribute="centerY" secondItem="6pv-wv-ja8" secondAttribute="centerY" id="f0H-n9-XD1"/>
+                        <constraint firstItem="U9o-7X-7Ep" firstAttribute="leading" secondItem="6pv-wv-ja8" secondAttribute="leading" constant="20" id="qDV-EM-MAu"/>
+                        <constraint firstAttribute="trailing" secondItem="U9o-7X-7Ep" secondAttribute="trailing" constant="20" id="qUw-nm-d19"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="29"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="SdX-xv-a8T" secondAttribute="bottom" id="9tg-2U-ony"/>
+                <constraint firstItem="R7h-yz-CF3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3nS-kP-83T"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="R7h-yz-CF3" secondAttribute="bottom" constant="20" id="6YH-IF-xGQ"/>
+                <constraint firstAttribute="bottom" secondItem="SdX-xv-a8T" secondAttribute="bottom" id="9tg-2U-ony"/>
                 <constraint firstItem="SdX-xv-a8T" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AqW-u8-T9n"/>
+                <constraint firstItem="6pv-wv-ja8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="PZ3-Cc-PYy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6pv-wv-ja8" secondAttribute="trailing" constant="20" id="Riw-9O-gxt"/>
                 <constraint firstItem="SdX-xv-a8T" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="lY2-ZE-4j7"/>
                 <constraint firstItem="SdX-xv-a8T" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="rYq-fs-o33"/>
+                <constraint firstAttribute="bottom" secondItem="6pv-wv-ja8" secondAttribute="bottom" constant="50" id="xSX-PR-uav"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>
         </view>
     </objects>
     <resources>
+        <image name="pencil" catalog="system" width="128" height="113"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

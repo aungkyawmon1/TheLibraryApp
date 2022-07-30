@@ -8,7 +8,7 @@
 import Foundation
 
 protocol YourBooksProtocol: AnyObject {
-    func removeDownload(id: String)
-    func addToShelves(id: String)
-    func readAboutThisBook(id: String)
+    func removeDownload(book: BookVO)
+    func addToShelves(book: BookVO)
+    func readAboutThisBook(book: BookVO)
 }

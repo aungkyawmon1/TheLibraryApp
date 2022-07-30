@@ -87,6 +87,7 @@ class BookRepository: BaseRepository, BookProtocol {
             switch changes {
             case .update(let vo, deletions: _, insertions: _, modifications: _):
                 subject.send(Array(vo))
+                self?.notificationToken1?.invalidate()
             default:
                 debugPrint("Hello")
             }
@@ -108,6 +109,7 @@ class BookRepository: BaseRepository, BookProtocol {
             switch changes {
             case .update(let vo, deletions: _, insertions: _, modifications: _):
                 subject.send(Array(vo))
+              //  self?.notificationToken2?.invalidate()
             default:
                 debugPrint("Hello")
             }
@@ -148,6 +150,7 @@ class BookRepository: BaseRepository, BookProtocol {
              switch changes {
              case .update(let vo, deletions: _, insertions: _, modifications: _):
                  subject.send(Array(vo.first!.books))
+                 self?.notificationToken3?.invalidate()
              default:
                  debugPrint("Hello")
              }
@@ -169,6 +172,7 @@ class BookRepository: BaseRepository, BookProtocol {
             switch changes {
             case .update(let vo, deletions: _, insertions: _, modifications: _):
                 subject.send(Array(vo))
+               // self?.notificationToken4?.invalidate()
             default:
                 debugPrint("\(#function)")
             }

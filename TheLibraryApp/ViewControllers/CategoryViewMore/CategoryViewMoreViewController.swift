@@ -35,6 +35,15 @@ class CategoryViewMoreViewController: UIViewController {
         bookCollectionView.delegate = self
         bookCollectionView.registerForCell(identifier: BookListCollectionViewCell.identifier)
     }
+    
+    
+    func navigateToMoreActionDelegate(bookVO: BookVO) {
+        let vc = MoreActionViewController()
+        vc.delegate = self
+        vc.viewModel = MoreActionViewModel(bookModel: BookModel.shared, bookVO: bookVO)
+        vc.modalPresentationStyle = .overCurrentContext
+        self.tabBarController?.present(vc, animated: true)
+    }
 
 }
 
@@ -68,6 +77,21 @@ extension CategoryViewMoreViewController: UICollectionViewDelegateFlowLayout, UI
 
 extension CategoryViewMoreViewController: ViewMoreProtocol {
     func clickViewMore(bookVO: BookVO) {
-        navigateToMoreAction(bookVO: bookVO)
+        navigateToMoreActionDelegate(bookVO: bookVO)
     }
+}
+
+extension CategoryViewMoreViewController: YourBooksProtocol {
+    func removeDownload(book: BookVO) {
+        
+    }
+    
+    func addToShelves(book: BookVO) {
+        navigateToAddShelf()
+    }
+    
+    func readAboutThisBook(book: BookVO) {
+        navigateToDetail(book: book)
+    }
+    
 }

@@ -9,7 +9,7 @@ import Foundation
 
 enum BookDetailSectionType {
     case bookInfo(image: String, title: String, author: String)
-    case bookActionItem
+    case bookActionItem(isInWishlist: Bool)
     case aboutBook(description: String)
     case ratingAndReviews
     case comments(comment: [Comment])

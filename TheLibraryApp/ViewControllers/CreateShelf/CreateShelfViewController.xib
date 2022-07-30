@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateShelfViewController" customModule="TheLibraryApp" customModuleProvider="target">
             <connections>
+                <outlet property="lblShelfCount" destination="1xr-dZ-ufj" id="ilr-gI-kpY"/>
                 <outlet property="tfShelfName" destination="EVD-lV-VU6" id="3xX-bk-vA5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

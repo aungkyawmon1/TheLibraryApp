@@ -9,15 +9,34 @@ import UIKit
 
 class BookActionItemTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var btnAddToWishlist : UIButton!
+    weak var delegate : BookActionItemDelegate? = nil
+    
+    var isInWishlist: Bool? {
+        didSet {
+            if let data = isInWishlist {
+                btnAddToWishlist.titleLabel?.text = data ? "Delete from Wishlist" : "Add to Wishlist"
+                btnAddToWishlist.backgroundColor = data ? .red : .blue
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
+    @IBAction func addToWishlistBtnClick(_ sender: UIButton) {
+        if isInWishlist ?? false {
+            delegate?.deleteFromWishlist()
+        } else {
+            delegate?.addToWishlist()
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        
     }
     
 }

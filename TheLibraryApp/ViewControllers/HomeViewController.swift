@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var homeTableView: UITableView!
     var bag = Set<AnyCancellable>()
-    private var viewModel : HomeViewModel!
+    private var viewModel = HomeViewModel(bookModel: BookModel.shared)
     
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -24,7 +24,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel = HomeViewModel(bookModel: BookModel.shared)
         viewModel.viewState.sink { homeViewState in
             switch homeViewState {
             case .success(let sectionType):
@@ -71,6 +70,14 @@ class HomeViewController: UIViewController {
         
     }
     
+    private func navigateToMoreActionDelegate(bookVO: BookVO) {
+        let vc = MoreActionViewController()
+        vc.delegate = self
+        vc.viewModel = MoreActionViewModel(bookModel: BookModel.shared, bookVO: bookVO)
+        vc.modalPresentationStyle = .overCurrentContext
+        self.tabBarController?.present(vc, animated: true)
+    }
+    
 
 }
 
@@ -101,6 +108,7 @@ extension HomeViewController: UITableViewDataSource {
         case .RecentlyOpenedItems(let list):
             guard let cell = tableView.dequeueCell(identifier: DetailHistoryTableViewCell.identifier, indexPath: indexPath) as? DetailHistoryTableViewCell else { return UITableViewCell() }
             cell.recentlyDetailedBooks = list
+            cell.delegate = self
             return cell
         }
     }
@@ -114,7 +122,7 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: ViewMoreProtocol {
     func clickViewMore(bookVO: BookVO) {
-        navigateToMoreAction(bookVO: bookVO)
+        navigateToMoreActionDelegate(bookVO: bookVO)
     }
 }
 
@@ -123,6 +131,22 @@ extension HomeViewController: DetailProtocol {
     func goToDetail(book: BookVO) {
         self.navigateToDetail(book: book)
     }
+}
+
+extension HomeViewController: YourBooksProtocol {
+    func removeDownload(book: BookVO) {
+        
+    }
+    
+    func addToShelves(book: BookVO) {
+        navigateToAddShelf(book: book)
+    }
+    
+    func readAboutThisBook(book: BookVO) {
+        self.navigateToDetail(book: book)
+    }
+    
+    
 }
 
 extension HomeViewController: ShowMoreProtocol {

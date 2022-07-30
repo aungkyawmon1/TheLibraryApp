@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (5.6.1)
   - IQKeyboardManagerSwift (6.5.10)
+  - Mocker (2.5.5)
   - Realm (10.28.2):
     - Realm/Headers (= 10.28.2)
   - Realm/Headers (10.28.2)
@@ -14,7 +15,8 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - IQKeyboardManagerSwift
-  - RealmSwift (~> 10.28.2)
+  - Mocker (~> 2.5.4)
+  - RealmSwift (~> 10.28)
   - SDWebImage
   - SDWebImage (~> 5.0)
   - UPCarouselFlowLayout
@@ -23,6 +25,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - IQKeyboardManagerSwift
+    - Mocker
     - Realm
     - RealmSwift
     - SDWebImage
@@ -31,11 +34,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  Mocker: 8c731a8104962f246cadf2b02556218e9edc1390
   Realm: e617c54ad0f566b3d0f6a2abae7010de05f252ac
   RealmSwift: 8a516a8759d80d52ebcec1ff1076f5f5159f98b2
   SDWebImage: a47aea9e3d8816015db4e523daff50cfd294499d
   UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
 
-PODFILE CHECKSUM: 45293f0121dbfca35a9a6703577a31aa515304c9
+PODFILE CHECKSUM: fddbd6b482480728427605f63ee7dc534bab2612
 
 COCOAPODS: 1.11.3

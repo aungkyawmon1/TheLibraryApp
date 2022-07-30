@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShelfDetailViewController" customModule="TheLibraryApp" customModuleProvider="target">
             <connections>
                 <outlet property="bookCollectionView" destination="bpa-Yb-dnz" id="HAV-WN-dEF"/>
+                <outlet property="lblBookCount" destination="RkT-F5-7Fm" id="wDi-c7-umO"/>
+                <outlet property="lblShelfTitle" destination="sus-Dm-osN" id="7g7-uH-39i"/>
                 <outlet property="sortAndGridView" destination="BpR-nu-4AO" id="RPN-tI-hBT"/>
                 <outlet property="sortByLbl" destination="8nC-Rh-g6a" id="e4u-dt-u0b"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

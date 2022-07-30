@@ -10,7 +10,7 @@ import RealmSwift
 
 class ShelfVO: Object {
     @Persisted(primaryKey: true)
-    var primaryIsbn13: String?
+    var id: String
     
     @Persisted
     var recentlyDate: Date
@@ -19,5 +19,8 @@ class ShelfVO: Object {
     var shelfTitle: String
     
     @Persisted
-    var book: List<BookVO>
+    var book: List<ShelfBookVO>
+    
+    @Persisted
+    var image: String?
 }

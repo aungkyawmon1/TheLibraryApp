@@ -18,13 +18,14 @@ class HomeViewModel {
     private var bookModel: BookModelProtocol
     var bag = Set<AnyCancellable>()
     var viewState: PassthroughSubject<HomeViewState, Never> = .init()
+    var someValue: CurrentValueSubject<HomeViewState, Never> = CurrentValueSubject<HomeViewState, Never>(.failure(message: ""))
     private var items: [HomeViewControllerSectionType] = [
             .RecentlyOpenedItems(items: [RecentDetailVO]()),
             .CategorySelection,
             .ItemList(items: [ListVO]())
     ]
     
-    init(bookModel: BookModel) {
+    init(bookModel: BookModelProtocol) {
         self.bookModel = bookModel
     }
     
@@ -52,21 +53,25 @@ class HomeViewModel {
         }
     }
     
-    private func fetchRecentDetailedBook() {
+    func fetchRecentDetailedBook() {
+        
         bookModel.getRecentlyDetailedBooks()
             .sink(receiveCompletion: { error in
                 self.viewState.send(.failure(message: "\(error)"))
             }, receiveValue: { list in
                 self.items[0] = .RecentlyOpenedItems(items: list)
                 self.viewState.send(.success(type: .RecentlyOpenedItems(items: list)))
+             //   self.someValue.send(.success(type: .RecentlyOpenedItems(items: list)))
+                debugPrint("test in homwviewmodel")
             }).store(in: &bag)
     }
     
-    private func fetchBookList() {
+    func fetchBookList() {
         bookModel.getBookListOverview()
             .sink { listVO in
                 self.items[2] = .ItemList(items: listVO)
                 self.viewState.send(.success(type: .ItemList(items: listVO)))
+               // self.someValue.send(.success(type: .ItemList(items: listVO)))
             }.store(in: &bag)
     }
 }

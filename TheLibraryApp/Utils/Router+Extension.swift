@@ -15,25 +15,19 @@ extension UIViewController {
         vc.viewModel = MoreActionViewModel(bookModel: BookModel.shared, bookVO: bookVO)
         vc.modalPresentationStyle = .overCurrentContext
         self.tabBarController?.present(vc, animated: true)
-        //self.present(vc, animated: true)
     }
     
     
     func navigateToDetail(book: BookVO) {
         let vc = BookDetailViewController()
-        vc.selectedBook = book
+        vc.viewModel = BookDetailViewModel(bookModel: BookModel.shared, bookVO: book)
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .flipHorizontal
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func navigateToShelfUpdate() {
-        let vc = ShelfUpdateViewController()
-        vc.modalPresentationStyle = .overCurrentContext
-        present(vc, animated: true)
-        //self.tabBarController?.present(vc, animated: true)
-    }
+
     
     func navigateToRatingsAndReviews() {
         let vc = RatingsAndReviewsViewController()
@@ -42,26 +36,28 @@ extension UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func navigateToCreateShelf() {
+    func navigateToCreateShelf(shelfVO: ShelfVO = ShelfVO(), isReanme : Bool = false) {
         let vc = CreateShelfViewController()
-//        vc.modalPresentationStyle = .fullScreen
-//        vc.modalTransitionStyle = .flipHorizontal
+        vc.viewModel = CreateShelfViewModel(shelfModel: ShelfModel.shared, shelfVO: shelfVO, isRename: isReanme)
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func navigateToShelfDetail(){
+    func navigateToShelfDetail(shelfVO: ShelfVO){
         let vc = ShelfDetailViewController()
+        vc.viewModel = ShelfDetailViewModel(shelfModel: ShelfModel.shared, shelfVO: shelfVO)
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .flipHorizontal
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func navigateToAddShelf() {
+    func navigateToAddShelf(book: BookVO = BookVO()) {
         let vc = AddToShelfViewController()
+        vc.viewModel = AddToShelfViewModel(shelfModel: ShelfModel.shared, book: book)
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .flipHorizontal
+        vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

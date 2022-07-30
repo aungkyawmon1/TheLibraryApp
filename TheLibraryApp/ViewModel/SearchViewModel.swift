@@ -17,9 +17,9 @@ class SearchViewModel {
     private var searchModel: SearchModelProtocol
     private var bag = Set<AnyCancellable>()
     private var books = [BookVO]()
-    var viewState: PassthroughSubject<ShowMoreViewState, Never> = .init()
-    
-    init(searchModel: SearchModel){
+    var viewState: PassthroughSubject<SearchViewState, Never> = .init()
+    var someValue: CurrentValueSubject<SearchViewState, Never> = CurrentValueSubject<SearchViewState, Never>(.failure(message: ""))
+    init(searchModel: SearchModelProtocol){
         self.searchModel = searchModel
     }
     
@@ -30,6 +30,7 @@ class SearchViewModel {
             .sink { data in
                 self.books = data
                 self.viewState.send(.success)
+                self.someValue.send(.success)
             }.store(in: &bag)
     }
     

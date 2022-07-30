@@ -21,7 +21,7 @@ class MoreActionViewController: UIViewController {
     @IBOutlet weak var ivBookCover : UIImageView!
     
     var viewModel = MoreActionViewModel(bookModel: BookModel.shared, bookVO: BookVO() )
-    
+    weak var delegate: YourBooksProtocol? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         initSetUp()
@@ -102,7 +102,8 @@ class MoreActionViewController: UIViewController {
     }
     
     @objc private func onTapAbout() {
-        navigateToDetail(book: viewModel.book)
+        delegate?.readAboutThisBook(book: viewModel.book)
+        dismiss(animated: true)
     }
     
     @objc private func onTapDelete() {
@@ -115,6 +116,7 @@ class MoreActionViewController: UIViewController {
     }
     
     @objc private func onTapShelf() {
-        
+        delegate?.addToShelves(book: viewModel.book)
+        dismiss(animated: true)
     }
 }

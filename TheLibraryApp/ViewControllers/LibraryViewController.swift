@@ -33,13 +33,14 @@ class LibraryViewController: UIViewController {
     }()
     
     private var gridState: Layout = .list
+    private var sortBy: SortBy = .recent
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
         initState()
         
-        viewModel = LibraryViewModel(bookModel: BookModel.shared)
+        viewModel = LibraryViewModel(bookModel: BookModel.shared, shelfModel: ShelfModel.shared)
         
         viewModel?.viewState
             .sink(receiveValue: { [weak self] state in
@@ -53,13 +54,14 @@ class LibraryViewController: UIViewController {
             }).store(in: &bag)
         
         viewModel?.fetchWishlist(sort: "recentlyDate")
+        //viewModel?.getShelf()
         
     }
     
-    override func didReceiveMemoryWarning()
-     {
-         super.didReceiveMemoryWarning()
-     }
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel?.getShelf()
+    }
+
     
     private func initState() {
         searchBar.delegate = self
@@ -120,7 +122,7 @@ class LibraryViewController: UIViewController {
     
 
     @IBAction func btnGridClicked(_ sender: UIButton) {
-        navigateToViewAsViewController()
+        navigateToViewAsViewController(index: gridState)
     }
     
     @IBAction func btnCreateNew(_ sender: UIButton) {
@@ -129,7 +131,7 @@ class LibraryViewController: UIViewController {
     
     
     @IBAction func btnSortClick(_ sender: Any) {
-        navigateToSortBy()
+        navigateToSortBy(index: sortBy)
     }
     
     func navigateToViewAsViewController(index: Layout = .list) {
@@ -151,14 +153,14 @@ class LibraryViewController: UIViewController {
     }
     
     
-    func navigateToMoreActionForYourBooks(id: String) {
-        let vc = MoreActionForYourBooksViewController()
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.hidesBottomBarWhenPushed = true
+    func navigateToMoreActionDelegate(bookVO: BookVO) {
+        let vc = MoreActionViewController()
         vc.delegate = self
+        vc.viewModel = MoreActionViewModel(bookModel: BookModel.shared, bookVO: bookVO)
+        vc.modalPresentationStyle = .overCurrentContext
         self.tabBarController?.present(vc, animated: true)
-        //self.present(vc, animated: true)
     }
+    
 
 }
 
@@ -167,7 +169,7 @@ extension LibraryViewController: UICollectionViewDataSource {
         if isYourBookSection {
             return viewModel?.getWishlistCount() ?? 0
         } else {
-            return 10
+            return viewModel?.getShelfCount() ?? 0
         }
     }
     
@@ -186,6 +188,7 @@ extension LibraryViewController: UICollectionViewDataSource {
             }
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShelfCollectionViewCell.identifier, for: indexPath) as? ShelfCollectionViewCell else { return UICollectionViewCell() }
+            cell.shelf = viewModel?.getShelf(at: indexPath.row)
             return cell
         }
     }
@@ -195,20 +198,20 @@ extension LibraryViewController: UICollectionViewDataSource {
 
 extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if(scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 0) && isYourBookSection {
-            sortAndGridView.isHidden = false
-        }
-        else {
-            sortAndGridView.isHidden = true
-        }
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if(scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 0) && isYourBookSection {
+//            sortAndGridView.isHidden = false
+//        }
+//        else {
+//            sortAndGridView.isHidden = true
+//        }
+//    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if isYourBookSection {
             navigateToDetail(book: viewModel?.getWishlist(at: indexPath.row) ?? BookVO() )
         } else {
-            navigateToShelfDetail()
+            navigateToShelfDetail(shelfVO: viewModel?.getShelf(at: indexPath.row) ?? ShelfVO() )
         }
     }
     
@@ -230,12 +233,16 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDeleg
 
 extension LibraryViewController: RadioItemProtocol {
     func onTapRadioForSort(index: SortBy) {
+        sortBy = index
         switch index {
         case .recent:
+            lblSortBy.text = "Sort by: Recent"
             viewModel?.fetchWishlist(sort: "recentlyDate")
         case .title:
+            lblSortBy.text = "Sort by: Title"
             viewModel?.fetchWishlist(sort: "title")
         case .author:
+            lblSortBy.text = "Sort by: Author"
             viewModel?.fetchWishlist(sort: "author")
         }
         
@@ -249,24 +256,30 @@ extension LibraryViewController: RadioItemProtocol {
 
 extension LibraryViewController: ViewMoreProtocol {
     func clickViewMore(bookVO: BookVO) {
-        navigateToMoreAction(bookVO: bookVO)
+        navigateToMoreActionDelegate(bookVO: bookVO)
     }
 }
 
 extension LibraryViewController: YourBooksProtocol {
-    func removeDownload(id: String) {
+    func removeDownload(book: BookVO) {
         
     }
     
-    func addToShelves(id: String) {
+    func addToShelves(book: BookVO) {
         navigateToAddShelf()
     }
     
-    func readAboutThisBook(id: String) {
-        navigateToDetail(book: BookVO())
+    func readAboutThisBook(book: BookVO) {
+        navigateToDetail(book: book)
+    }
+}
+
+extension LibraryViewController: DetailProtocol {
+    func goToDetail(book: BookVO) {
+        navigateToDetail(book: book)
     }
     
-
+    
 }
 
 extension LibraryViewController: UISearchBarDelegate {

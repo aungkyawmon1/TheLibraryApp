@@ -12,6 +12,7 @@ class DetailHistoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var detailHistoryCollectionView: UICollectionView!
     
+    weak var delegate: DetailProtocol? = nil
     var recentlyDetailedBooks : [RecentDetailVO]? {
         didSet {
             detailHistoryCollectionView.reloadData()
@@ -60,7 +61,11 @@ extension DetailHistoryTableViewCell: UICollectionViewDataSource {
     
 }
 
-extension DetailHistoryTableViewCell: UICollectionViewDelegateFlowLayout {
+extension DetailHistoryTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.goToDetail(book: recentlyDetailedBooks?[indexPath.row].book ?? BookVO() )
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: CGFloat(250), height: CGFloat(200))
     }

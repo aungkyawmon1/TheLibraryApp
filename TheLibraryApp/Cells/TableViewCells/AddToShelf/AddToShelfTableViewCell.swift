@@ -12,6 +12,15 @@ class AddToShelfTableViewCell: UITableViewCell {
     @IBOutlet weak var lblShelfName: UILabel!
     @IBOutlet weak var lblBookCount: UILabel!
     @IBOutlet weak var btnCheckmark: UIButton!
+    
+    var shelf: ShelfVO? {
+        didSet {
+            if let data = shelf {
+                lblShelfName.text = data.shelfTitle
+                lblBookCount.text = data.book.count > 0 ? "\(data.book.count) Books" : "\(data.book.count) Book"
+            }
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,11 +29,11 @@ class AddToShelfTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        if selected {
-            btnCheckmark.isSelected = true
-        } else {
-            btnCheckmark.isSelected = false
-        }
+//        if selected {
+//            btnCheckmark.isSelected = true
+//        } else {
+//            btnCheckmark.isSelected = false
+//        }
     }
     
 }
